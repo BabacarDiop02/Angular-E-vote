@@ -14,63 +14,72 @@ import {GestionElecteurComponent} from './pages/connecter/gestion-electeur/gesti
 import {ProfileComponent} from './pages/connecter/profile/profile.component';
 import {ChatbotComponent} from './pages/connecter/chatbot/chatbot.component';
 import {GestionResultatComponent} from './pages/connecter/gestion-resultat/gestion-resultat.component';
-import {AuthenticationGuard} from './services/guards/authetication.guard';
-import {RolesGuard} from './services/guards/roles.guard';
+import {AuthenticationGuard} from './guards/authetication.guard';
+import {RolesGuard} from './guards/roles.guard';
+import {ValidationCompteComponent} from './pages/public/validation-compte/validation-compte.component';
+import {SupervisorComponent} from './pages/connecter/supervisor/supervisor.component';
 
 export const routes: Routes = [
   {path : '', component : HomePageComponent},
   {path : 'home', component : HomePageComponent},
   {path : 'connection', component : ConnectionComponent},
   {path : 'inscription', component : InscriptionComponent},
+  {path : 'valid-code', component : ValidationCompteComponent},
   {path : 'contact', component : ContactComponent},
   {path : 'resultat', component : ResultatComponent},
   {path : 'candidat', component : CandidatComponent},
   {path : 'list-candidats', component : CandidatListComponent},
   {
-    path : 'connecter',
-    component : TemplateComponent,
+    path: 'connecter',
+    component: TemplateComponent,
     canActivate: [AuthenticationGuard], children : [
       {
-        path : 'voter',
-        component : VoterComponent,
+        path: 'voter',
+        component: VoterComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: 'ROLE_ELECTOR'}
+        data: {expectedRole: ['ROLE_ELECTOR']}
       },
       {
-        path : 'profile',
-        component : ProfileComponent,
+        path: 'profile',
+        component: ProfileComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: 'ROLE_ELECTOR'}
+        data: {expectedRole: ['ROLE_ELECTOR']}
       },
       {
-        path : 'chatbot',
-        component : ChatbotComponent,
+        path: 'chatbot',
+        component: ChatbotComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: 'ROLE_ELECTOR'}
+        data: {expectedRole: ['ROLE_ELECTOR']}
       },
       {
-        path : 'scrutin',
-        component : ScrutinComponent,
+        path: 'scrutin',
+        component: ScrutinComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: 'ROLE_ADMINISTRATOR'}
+        data: {expectedRole: ['ROLE_ADMINISTRATOR']}
       },
       {
-        path : 'gestion-candidat',
-        component : GestionCandidatComponent,
+        path: 'gestion-candidat',
+        component: GestionCandidatComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: 'ROLE_ADMINISTRATOR'}
+        data: {expectedRole: ['ROLE_ADMINISTRATOR']}
       },
       {
-        path : 'gestion-electeur',
-        component : GestionElecteurComponent,
+        path: 'gestion-electeur',
+        component: GestionElecteurComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: 'ROLE_ADMINISTRATOR'}
+        data: {expectedRole: ['ROLE_ADMINISTRATOR']}
       },
       {
-        path : 'gesttion-resultat',
-        component : GestionResultatComponent,
+        path: 'gesttion-resultat',
+        component: GestionResultatComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: 'ROLE_ADMINISTRATOR'}
+        data: {expectedRole: ['ROLE_ADMINISTRATOR', 'ROLE_SUPERVISOR']}
+      },
+      {
+        path: 'supervisor',
+        component: SupervisorComponent,
+        canActivate: [AuthenticationGuard, RolesGuard],
+        data: {expectedRole: ['ROLE_SUPERVISOR']}
       }
     ]
   }
