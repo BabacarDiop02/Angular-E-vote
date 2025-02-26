@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Déconnection</title>
-</head>
-<body>
-  <h2 mat-dialog-title>Déconnection</h2>
-  <mat-dialog-content>
-    Vous êtes sûr de vouloir vous déconnecter
-  </mat-dialog-content>
-  <mat-dialog-actions>
-    <button class="btn btn-outline-secondary me-3" mat-dialog-close cdkFocusInitial>Non</button>
-    <button class="btn btn-outline-danger" mat-dialog-close (click)="authenticationService.logout()" >Déconection</button>
-  </mat-dialog-actions>
-</body>
-</html>
+<h2 mat-dialog-title>Déconnection</h2>
+<mat-dialog-content>
+  Vous êtes sûr de vouloir vous déconnecter
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="btn btn-outline-secondary me-3" mat-dialog-close cdkFocusInitial>Non</button>
+  <button class="btn btn-outline-danger" mat-dialog-close (click)="authenticationService.logout()" >Déconection</button>
+</mat-dialog-actions>

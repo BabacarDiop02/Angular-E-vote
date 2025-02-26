@@ -18,13 +18,16 @@ import {AuthenticationGuard} from './guards/authetication.guard';
 import {RolesGuard} from './guards/roles.guard';
 import {ValidationCompteComponent} from './pages/public/validation-compte/validation-compte.component';
 import {SupervisorComponent} from './pages/connecter/supervisor/supervisor.component';
+import {NonAuthoriserComponent, RegisterSuccessComponent} from './pages/public/non-authoriser/non-authoriser.component';
 
 export const routes: Routes = [
   {path : '', component : HomePageComponent},
   {path : 'home', component : HomePageComponent},
+  {path : 'no-authorize', component : NonAuthoriserComponent},
   {path : 'connection', component : ConnectionComponent},
   {path : 'inscription', component : InscriptionComponent},
   {path : 'valid-code', component : ValidationCompteComponent},
+  {path : 'register-success', component : RegisterSuccessComponent},
   {path : 'contact', component : ContactComponent},
   {path : 'resultat', component : ResultatComponent},
   {path : 'candidat', component : CandidatComponent},

@@ -17,7 +17,7 @@ export class RolesGuard implements CanActivate {
     const hasRole = userRole.some(role => expectedRole.includes(role));
 
     if (!this.authenticationService.isAuthenticated() || !hasRole) {
-      this.router.navigate(['/connection']);
+      this.router.navigate(['/no-authorize']);
       return false;
     }
     return true;

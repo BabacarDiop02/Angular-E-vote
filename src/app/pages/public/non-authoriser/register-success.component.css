@@ -1,0 +1,27 @@
+.success-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.bi-check2-circle {
+  font-size: 100px;
+  color: #E58A20;
+}
+
+.btn-outline-primary {
+  border: 2px solid #0C5EB7;
+  background-color: #E58A20;
+  color: #0C5EB7;
+  letter-spacing: 3px;
+}
+
+.btn-outline-primary:hover {
+  border: 2px solid #E58A20;
+  background-color: #0C5EB7;
+  color: #E58A20;
+}
