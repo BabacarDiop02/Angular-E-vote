@@ -1,1 +1,112 @@
-<p>add-candidate works!</p>
+<div class="container">
+  <div class="register-container">
+    <h2 class="fw-bold line-left">
+      FORMULAIRE
+      <span>D’AJOUER</span>
+      CANDIDAT
+    </h2>
+
+    <form [formGroup]="candidateForm" enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Prénom Candidat</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le prénom du candidat"
+          formControlName="firstName"
+          [ngClass]="{'is-invalid': candidateForm.controls['firstName'].invalid && candidateForm.controls['firstName'].touched}"
+        />
+        <div *ngIf="candidateForm.controls['firstName'].invalid && candidateForm.controls['firstName'].touched" class="invalid-feedback">
+          Le prénom du candidat est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Nom de famille Candidat</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le nom de famille du candidat"
+          formControlName="lastName"
+          [ngClass]="{'is-invalid': candidateForm.controls['lastName'].invalid && candidateForm.controls['lastName'].touched}"
+        />
+        <div *ngIf="candidateForm.controls['lastName'].invalid && candidateForm.controls['lastName'].touched" class="invalid-feedback">
+          Le nom de famille du candidat est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">L'âge Candidat</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer l'âge du candidat"
+          formControlName="age"
+          [ngClass]="{'is-invalid': candidateForm.controls['age'].invalid && candidateForm.controls['age'].touched}"
+        />
+        <div *ngIf="candidateForm.controls['age'].invalid && candidateForm.controls['age'].touched" class="invalid-feedback">
+          <span *ngIf="candidateForm.controls['age'].errors?.['required']">
+            L'âge du candidatest requis.
+          </span>
+          <span *ngIf="candidateForm.controls['age'].errors?.['min'] || candidateForm.controls['age'].errors?.['max']">
+            L'âge doit être compris entre 25 et 75 ans.
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Proffesion Candidat</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le proffesion du candidat"
+          formControlName="occupation"
+          [ngClass]="{'is-invalid': candidateForm.controls['occupation'].invalid && candidateForm.controls['occupation'].touched}"
+        />
+        <div *ngIf="candidateForm.controls['occupation'].invalid && candidateForm.controls['occupation'].touched" class="invalid-feedback">
+          Le proffesion du candidat est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Portrait Candidat</label>
+        <textarea
+          type="text"
+          class="form-control"
+          placeholder="Entrer le portrait du candidat."
+          formControlName="portrait"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Photo Candidat</label>
+        <input
+          type="file"
+          class="form-control"
+          placeholder="choisie le photo du candidat"
+          (change)="onFileSelected($event, 'imageCandidate')"
+        />
+        <div *ngIf="imageCandidate === null" class="invalid-feedback">
+          Le prénom du candidat est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Programme Candidat</label>
+        <input
+          type="file"
+          class="form-control"
+          placeholder="choisie le grogramme du candidat"
+          (change)="onFileSelected($event, 'fileProgram')"
+        />
+        <div *ngIf="fileProgram === null" class="invalid-feedback">
+          Le prénom du candidat est requis.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="candidateForm.invalid" (click)="addCandidate()">AJOUTER L'ELECTEUR</button>
+
+    </form>
+  </div>
+</div>

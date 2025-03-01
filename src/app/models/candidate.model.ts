@@ -1,12 +1,12 @@
-export interface Candidate {
-  id: number;
-  firstName: string;
-  lastName: string;
-  age: number;
-  occupation: string;
-  portrait: string;
+export class Candidate {
+  id: number = 0;
+  firstName: string = "";
+  lastName: string = "";
+  age: number = 25;
+  occupation: string = "";
+  portrait: string = "";
   // back end
-  voice: number
-  programNameFile: string;
-  profileNameImage: string;
+  voice: number = 0;
+  programNameFile: string = "";
+  profileNameImage: string = "";
 }

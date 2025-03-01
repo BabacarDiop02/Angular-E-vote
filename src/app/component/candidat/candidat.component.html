@@ -1,9 +1,9 @@
 <div class="d-flex justify-content-center align-items-center mt-3">
   <div class="profile-container">
-    <img src="DIOMAYE.png" alt="Profil" class="profile-img">
+    <img [src]="candidateService.getFileUrl('profile', candidat.profileNameImage)" alt="Profil" class="profile-img">
     <div class="text-section">
-      <p class="subtitle">Inspecteur des impôts</p>
-      <p class="name">Bassirou Diomaye Faye</p>
+      <p class="subtitle">{{candidat.occupation}}</p>
+      <p class="name">{{candidat.firstName}} {{candidat.lastName}}</p>
     </div>
   </div>
 </div>

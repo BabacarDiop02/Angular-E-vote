@@ -1,5 +1,5 @@
 <div class="d-flex flex-wrap gap-5 justify-content-center">
-  @for (i of [0, 1, 2, 3, 4, 5, 6]; track i) {
-    <app-candidat routerLink="/candidat-infos"/>
+  @for (candidat of candidates; track candidat.id) {
+    <app-candidat [candidat]="candidat" (click)="informationCandidate(candidat)"/>
   }
 </div>
