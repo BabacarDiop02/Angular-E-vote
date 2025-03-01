@@ -1,0 +1,13 @@
+<div class="sidebar">
+  <ul class="menu">
+    <li><a routerLink="/connecter"><i class="iconify" data-icon="mdi:home-outline"></i> Accueil</a></li>
+    <li *ngIf="authenticationService.isElector()"><a routerLink="/connecter/voter" routerLinkActive="active"><i class="iconify" data-icon="fluent:vote-24-filled"></i> Voter</a></li>
+    <li *ngIf="authenticationService.isAdmin()"><a routerLink="/connecter/scrutin" routerLinkActive="active"><i class="iconify" data-icon="mdi:vote-recount"></i> Scrutin</a></li>
+    <li *ngIf="authenticationService.isAdmin()"><a routerLink="/connecter/gestion-candidat" routerLinkActive="active"><i class="bi bi-person-vcard-fill"></i> Candidats</a></li>
+    <li *ngIf="authenticationService.isAdmin()"><a routerLink="/connecter/gestion-electeur" routerLinkActive="active"><i class="bi bi-people-fill"></i> Électeurs</a></li>
+    <li *ngIf="authenticationService.isElector()"><a routerLink="/connecter/profile" routerLinkActive="active"><i class="bi bi-person-circle"></i> Mon Profil</a></li>
+    <li *ngIf="authenticationService.isAdmin() || authenticationService.isSupervisor()"><a routerLink="/connecter/gesttion-resultat" routerLinkActive="active"><i class="iconify" data-icon="carbon:result-old"></i> Résultats</a></li>
+    <li *ngIf="authenticationService.isAdmin() || authenticationService.isSupervisor()"><a routerLink="/connecter/supervisor" routerLinkActive="active"><i class="iconify" data-icon="emojione-monotone:eyes"></i> Superviser</a></li>
+    <li *ngIf="authenticationService.isElector()"><a routerLink="/connecter/chatbot" routerLinkActive="active"><i class="bi bi-chat-quote-fill"></i> Chatbot</a></li>
+  </ul>
+</div>

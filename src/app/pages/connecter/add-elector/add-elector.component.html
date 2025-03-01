@@ -1,0 +1,210 @@
+<div class="container">
+  <div class="register-container">
+    <h2 class="fw-bold line-left">
+      FORMULAIRE
+      @if (!updateElector) {
+        <span>D’AJOUER</span>
+      } @else {
+        <span>DE MODIFICATION</span>
+      }
+      D'ELECTEUR
+    </h2>
+
+    <form [formGroup]="electorForm">
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Prénom Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le prénom de l'électeur"
+          formControlName="firstName"
+          [ngClass]="{'is-invalid': electorForm.controls['firstName'].invalid && electorForm.controls['firstName'].touched}"
+        />
+        <div *ngIf="electorForm.controls['firstName'].invalid && electorForm.controls['firstName'].touched" class="invalid-feedback">
+          Le prénom de l'électeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Nom de famille de Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le nom de famille de l'électeur"
+          formControlName="lastName"
+          [ngClass]="{'is-invalid': electorForm.controls['lastName'].invalid && electorForm.controls['lastName'].touched}"
+        />
+        <div *ngIf="electorForm.controls['lastName'].invalid && electorForm.controls['lastName'].touched" class="invalid-feedback">
+          Le nom de famille de l'électeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Numéro d’identification national Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le numéro d’identification national de l'électeur"
+          formControlName="nationalIdentificationNumber"
+          [ngClass]="{'is-invalid': electorForm.controls['nationalIdentificationNumber'].invalid && electorForm.controls['nationalIdentificationNumber'].touched}"
+        />
+        <div *ngIf="electorForm.controls['nationalIdentificationNumber'].invalid && electorForm.controls['nationalIdentificationNumber'].touched" class="invalid-feedback">
+          <span *ngIf="electorForm.controls['nationalIdentificationNumber'].errors?.['required']">
+            Le numéro d'identification nationnal est requis.
+          </span>
+          <span *ngIf="electorForm.controls['nationalIdentificationNumber'].errors?.['pattern']">
+            Le numéro d'identification nationnal doit contenir 13 chiffre.
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Date de naissance Electeur</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="Entrer la date de naissance de l'electeur"
+          formControlName="dateOfBirth"
+          [ngClass]="{'is-invalid': electorForm.controls['dateOfBirth'].invalid && electorForm.controls['dateOfBirth'].touched}"
+        />
+        <div *ngIf="electorForm.controls['dateOfBirth'].invalid && electorForm.controls['dateOfBirth'].touched" class="invalid-feedback">
+          <span *ngIf="electorForm.controls['dateOfBirth'].errors?.['required']">
+            La date de naissance de l'electeur est requis.
+          </span>
+          <span *ngIf="electorForm.controls['dateOfBirth'].errors?.['ageInvalid']">
+            L'électeur doit avoir au moins 18 ans.
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Lieu de naissance Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le lieu de naissance de l'electeur"
+          formControlName="placeOfBirth"
+          [ngClass]="{'is-invalid': electorForm.controls['placeOfBirth'].invalid && electorForm.controls['placeOfBirth'].touched}"
+        />
+        <div *ngIf="electorForm.controls['placeOfBirth'].invalid && electorForm.controls['placeOfBirth'].touched" class="invalid-feedback">
+          Le lieu de naissance de l'electeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Numéro d’électeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le numéro d’électeur"
+          formControlName="voterNumber"
+          [ngClass]="{'is-invalid': electorForm.controls['voterNumber'].invalid && electorForm.controls['voterNumber'].touched}"
+        />
+        <div *ngIf="electorForm.controls['voterNumber'].invalid && electorForm.controls['voterNumber'].touched" class="invalid-feedback">
+          <span *ngIf="electorForm.controls['voterNumber'].errors?.['required']">
+            Le numéro d'électeur est requis.
+          </span>
+          <span *ngIf="electorForm.controls['voterNumber'].errors?.['pattern']">
+            Le numéro d'électeur doit contenir 9 chiffre.
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Région Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer la région de électeur."
+          formControlName="region"
+          [ngClass]="{'is-invalid': electorForm.controls['region'].invalid && electorForm.controls['region'].touched}"
+        />
+        <div *ngIf="electorForm.controls['region'].invalid && electorForm.controls['region'].touched" class="invalid-feedback">
+          La région de l'electeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Département Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le département de l'électeur"
+          formControlName="department"
+          [ngClass]="{'is-invalid': electorForm.controls['department'].invalid && electorForm.controls['department'].touched}"
+        />
+        <div *ngIf="electorForm.controls['department'].invalid && electorForm.controls['department'].touched" class="invalid-feedback">
+          Le département de l'électeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Arrondissement Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer l'arrondissement de l'électeur"
+          formControlName="borough"
+          [ngClass]="{'is-invalid': electorForm.controls['borough'].invalid && electorForm.controls['borough'].touched}"
+        />
+        <div *ngIf="electorForm.controls['borough'].invalid && electorForm.controls['borough'].touched" class="invalid-feedback">
+          L'arrondissement de l'électeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Commun Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer la commun de electeur"
+          formControlName="town"
+          [ngClass]="{'is-invalid': electorForm.controls['town'].invalid && electorForm.controls['town'].touched}"
+        />
+        <div *ngIf="electorForm.controls['town'].invalid && electorForm.controls['town'].touched" class="invalid-feedback">
+          La commun de electeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Lieu de vote Electeur</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le lieu de vote de l'electeur"
+          formControlName="votingPlace"
+          [ngClass]="{'is-invalid': electorForm.controls['votingPlace'].invalid && electorForm.controls['votingPlace'].touched}"
+        />
+        <div *ngIf="electorForm.controls['votingPlace'].invalid && electorForm.controls['votingPlace'].touched" class="invalid-feedback">
+          Le lieu de vote de l'electeur est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Bureau de vote Electeur</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Entrer le bureau de vote de l'electeur"
+          formControlName="pollingStation"
+          [ngClass]="{'is-invalid': electorForm.controls['pollingStation'].invalid && electorForm.controls['pollingStation'].touched}"
+        />
+        <div *ngIf="electorForm.controls['pollingStation'].invalid && electorForm.controls['pollingStation'].touched" class="invalid-feedback">
+          <span *ngIf="electorForm.controls['pollingStation'].errors?.['required']">
+            Le bureau de vote de l'electeur est requis.
+          </span>
+          <span *ngIf="electorForm.controls['pollingStation'].errors?.['min']">
+            Le bureau de vote de l'electeur doit être supérieur à 0.
+          </span>
+        </div>
+      </div>
+      @if (!updateElector) {
+        <button type="submit" class="btn btn-primary" [disabled]="electorForm.invalid" (click)="addElecetor()">AJOUTER L'ELECTEUR</button>
+      } @else {
+        <button type="submit" class="btn btn-primary" [disabled]="electorForm.invalid" (click)="updatedElecetor()">MODIFIER L'ELECTEUR</button>
+      }
+
+    </form>
+  </div>
+</div>

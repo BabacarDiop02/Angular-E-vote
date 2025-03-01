@@ -1,0 +1,58 @@
+<div class="mt-4">
+  <div class="row">
+    <!-- Colonne de l'image -->
+    <div class="col-md-4">
+      <div class="card shadow">
+        <img class="img-fluid" src="DIOMAYE.png" alt="Profil">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">Bassirou Diomaye Diakhare Faye</h5>
+          <p class="text-muted">INSPECTEUR DES IMPÔTS</p>
+          <p><strong>Age :</strong> 43</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne du texte -->
+    <div class="col-md-8">
+      <div class="ms-3">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [class.active]="activeTab === 'portrait'" (click)="activeTab = 'portrait'">
+              <strong>PORTRAIT</strong>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [class.active]="activeTab === 'programme'" (click)="activeTab = 'programme'">
+              <strong>PROGRAMME</strong>
+            </a>
+          </li>
+        </ul>
+
+        <div class="corps p-3">
+          <div *ngIf="activeTab === 'portrait'">
+            <p>
+              Bassirou Diomaye Faye, né à Ndiaganiao il y a 40 ans, a commencé son parcours éducatif à la mission catholique et au CEM de Ndiaganiao, avant de poursuivre ses études au Lycée Demba Diop de Mbour où il a décroché son baccalauréat en 2000.
+            </p>
+            <p>
+              Il est diplômé de l’ENA et détient une maîtrise en Droit de l’UCAD obtenue en 2004.
+            </p>
+            <p>
+              Sa carrière professionnelle l’a vu occuper divers postes au sein de l’administration fiscale sénégalaise, notamment au Centre des professions libérales, au Centre des grandes entreprises, et à la Brigade des vérifications, avant de devenir chef du bureau des contentieux à la Direction de la législation et de la coopération.
+            </p>
+            <p>
+              Bassirou Diomaye Faye est membre fondateur du parti Pastef-Les Patriotes, où il été président du Mouvement des cadres puis secrétaire général avant la dissolution du parti en Juillet 2023.
+            </p>
+            <p>
+              Bassirou Diomaye Faye est en prison depuis le mois d’avril 2023 et accusé de diffusion de fausse nouvelle, outrage à magistrat et diffamation envers un corps constitué, à la suite de la publication d’un post sur les réseaux sociaux où il critique le comportement de certains magistrats.
+            </p>
+          </div>
+
+          <div *ngIf="activeTab === 'programme'">
+            <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false"></pdf-viewer>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

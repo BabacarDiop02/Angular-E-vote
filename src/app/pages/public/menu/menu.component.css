@@ -1,0 +1,40 @@
+.navbar {
+  background-color: #0C5EB7;
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link, .bi {
+  color: white;
+}
+
+.btn-connexion {
+  background-color: #ff9900;
+  border-radius: 20px;
+  color: white;
+}
+img {
+  max-width: 100px;
+  max-height: 50px;
+}
+
+
+.borderBottom {
+  border-bottom: 1px solid #E58A20;
+}
+
+.sidebar-toggle {
+  margin-right: 10px;
+}
+
+.active {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  font-weight: 550;
+  letter-spacing: 2px;
+  text-underline-offset: 5px;
+}
+

@@ -1,0 +1,18 @@
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" position="start" opened="true">
+    @if (authenticationService.isAuthenticated()){
+      <app-sidebar-menu/>
+    }
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="p-3">
+      <mat-card>
+        <mat-card-content>
+          <div class="overflow-auto">
+            <router-outlet/>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

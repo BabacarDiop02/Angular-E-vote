@@ -1,0 +1,28 @@
+pdf-viewer {
+  height: 500px;
+}
+
+strong {
+  color: #0C5EB7;
+}
+
+.corps {
+  border: 1px solid #0C5EB7;
+  background-color: white;
+}
+
+.nav-tabs .nav-link.active {
+  border-color: #0C5EB7;
+}
+
+.text-primary {
+  color: #0C5EB7 !important;
+  font-weight: bold;
+  font-size: x-large;
+  text-decoration: underline;
+}
+
+.card {
+  border: 1px solid #0C5EB7;
+  overflow: hidden;
+}

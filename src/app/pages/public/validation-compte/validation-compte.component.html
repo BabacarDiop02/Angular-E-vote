@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="text-center" [formGroup]="codeForm">
+    <h3>Entrez votre code de validation</h3>
+    <p>Veuillez entrer le code reçu par SMS ou email</p>
+    <form class="d-flex justify-content-center">
+      <input type="text" maxlength="1" class="code-input form-control" autofocus formControlName="code1">
+      <input type="text" maxlength="1" class="code-input form-control" formControlName="code2">
+      <input type="text" maxlength="1" class="code-input form-control" formControlName="code3">
+      <input type="text" maxlength="1" class="code-input form-control" formControlName="code4">
+      <input type="text" maxlength="1" class="code-input form-control" formControlName="code5">
+      <input type="text" maxlength="1" class="code-input form-control" formControlName="code6">
+    </form>
+    <button class="btn btn-primary mt-3" [disabled]="codeForm.invalid" (click)="valid()">Valider</button>
+  </div>
+</div>

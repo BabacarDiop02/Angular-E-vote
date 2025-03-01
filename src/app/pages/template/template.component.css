@@ -1,0 +1,7 @@
+mat-drawer {
+  max-width: 250px;
+}
+
+mat-drawer-content {
+  min-height: 600px;
+}

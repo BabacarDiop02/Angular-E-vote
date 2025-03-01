@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg borderBottom">
+  <div class="container-fluid">
+    @if (authenticationService.isAuthenticated()) {
+      <button mat-icon-button>
+        <mat-icon class="text-white" (click)="toggleSideBar()">menu</mat-icon>
+      </button>
+    }
+    <a class="navbar-brand" href="#">
+      <img src="logoEvote.png" alt="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span>
+      <i class="bi bi-list"></i>
+    </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto text-end">
+        <li class="nav-item me-lg-5"><a class="nav-link" routerLink="/home" routerLinkActive="active">Accueil</a></li>
+        <li class="nav-item me-lg-5"><a class="nav-link" routerLink="/list-candidats" routerLinkActive="active">Candidats</a></li>
+        <li class="nav-item me-lg-5"><a class="nav-link" routerLink="/resultat" routerLinkActive="active">Résultats</a></li>
+        <li class="nav-item me-lg-5"><a class="nav-link" routerLink="/candidat" routerLinkActive="active">Contact</a></li>
+        <li class="nav-item ">
+          @if (!authenticationService.isAuthenticated()) {
+            <button class="btn btn-connexion ms-2 px-5 text-black fw-bold" routerLink="/connection" [attr.data-bs-toggle]=" isSmallScreen ? 'collapse' : null" [attr.data-bs-target]=" isSmallScreen ? '#navbarNav' : null">Connection</button>
+          } @else {
+            <button class="btn btn-connexion ms-2 px-5 text-black fw-bold" (click)="deleteDialog('0ms', '0ms')" [attr.data-bs-toggle]=" isSmallScreen ? 'collapse' : null" [attr.data-bs-target]=" isSmallScreen ? '#navbarNav' : null">Déconnection</button>
+          }
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
