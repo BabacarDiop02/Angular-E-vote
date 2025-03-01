@@ -1,0 +1,11 @@
+img {
+  max-width: 160%;
+  height: auto;
+}
+h1 {
+  color: #0C5EB7;;
+}
+
+.borderColor {
+  border-top: 1px solid #0C5EB7;
+}

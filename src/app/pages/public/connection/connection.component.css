@@ -1,0 +1,76 @@
+.login-container {
+  position: absolute;
+  right: -100%;
+  max-width: 500px;
+  background: #0C5EB7;
+  color: white;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  margin-right: 0;
+}
+.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  color: white;
+}
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.btn-primary {
+  background-color: #E58A20;
+  border: none;
+  border-radius: 20px;
+  padding: 7px;
+  color: black;
+  font-weight: bold;
+  width: 100%;
+}
+.btn-primary:hover {
+  background-color: #cc7700;
+  color: white;
+}
+.forgot-password {
+  text-align: center;
+  margin-top: 15px;
+}
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+}
+.register-link a {
+  color: #E58A20;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 40px;
+}
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.animate {
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 20px;
+  }
+}
+
+.borderLeft {
+  border-left: 1px solid #E58A20;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #E58A20;
+}
+
+h2 {
+  margin-bottom: 40px;
+}

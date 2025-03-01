@@ -1,0 +1,55 @@
+<div class="login-container animate p-0 ">
+  <div class="borderLeft my-0 p-3 ps-2">
+    <h2 class="text-uppercase fw-bold">Connexion</h2>
+
+    <form class="mb-5" [formGroup]="loginForm">
+      <!-- Message d'erreur si les identifiants sont incorrects -->
+      <div *ngIf="invalidCredentials" class="alert alert-danger">
+        <span>Email ou mot de passe incorrect.</span>
+      </div>
+      <div class="mb-4">
+        <label class="form-label fw-bold mb-0">Email</label>
+        <input
+          type="email"
+          class="form-control-plaintext mt-0 borderBottom"
+          placeholder="Entrer votre email"
+          formControlName="email"
+          [ngClass]="{'is-invalid': loginForm.controls['email'].invalid && loginForm.controls['email'].touched}"
+        />
+        <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="invalid-feedback">
+          <span *ngIf="loginForm.controls['email'].errors?.['required']">
+            L'email est requis.
+          </span>
+          <span *ngIf="loginForm.controls['email'].errors?.['email']">
+            L'email est incorrecte.
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-bold mb-0">Mot de passe</label>
+        <input
+          type="password"
+          class="form-control-plaintext mt-0 borderBottom"
+          placeholder="Entrer votre mot de passe"
+          formControlName="password"
+          [ngClass]="{'is-invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}"
+        />
+        <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="invalid-feedback">
+          <span *ngIf="loginForm.controls['password'].errors?.['required']">
+            Le mot de passe est requis.
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="login()">Connexion</button>
+
+      <div class="forgot-password">
+        <a href="#" class="text-white">Mot de passe oublié ?</a>
+      </div>
+    </form>
+    <div class="register-link mt-5">
+      <p>Pas encore de compte ? <a routerLink="/inscription">S’inscrire !</a></p>
+    </div>
+  </div>
+</div>

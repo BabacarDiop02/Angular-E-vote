@@ -1,0 +1,117 @@
+<div class="mat-elevation-z1">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="input-group mb-3">
+        <label class="input-group-text border-success" for="inputGroupFile01">Importer le ficher électorale</label>
+        <input type="file" #file class="form-control border-success" id="inputGroupFile01" (change)="onFileChange($event)" accept=".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+        <button type="button" class="btn btn-outline-success" (click)="importerFile()" [disabled]="isUploading">
+          <span *ngIf="isUploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="!isUploading">Enregistrer</span>
+        </button>
+      </div>
+
+      <!-- Message de confirmation ou d'erreur -->
+      <div *ngIf="message" [class]="messageClass">
+        {{ message }}
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <button type="button" class="btn btn-outline-primary float-end" routerLink="/connecter/add-electeur"><i class="bi bi-plus-circle"></i> Ajouter un electeur</button>
+    </div>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Cherche Electeur</mat-label>
+    <input matInput (change)="filterElector($event)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <table matSort mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> N° </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- nationalIdentificationNumber Column -->
+    <ng-container matColumnDef="nationalIdentificationNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro Identification Nationnal </th>
+      <td mat-cell *matCellDef="let element"> {{element.nationalIdentificationNumber}} </td>
+    </ng-container>
+
+    <!-- firstName Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- lastName Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- dateOfBirth Column -->
+    <ng-container matColumnDef="dateOfBirth">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de naissance </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <!-- placeOfBirth Column -->
+    <ng-container matColumnDef="placeOfBirth">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu de naissance </th>
+      <td mat-cell *matCellDef="let element"> {{element.placeOfBirth}} </td>
+    </ng-container>
+
+    <!-- voterNumber Column -->
+    <ng-container matColumnDef="voterNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro d'électeur </th>
+      <td mat-cell *matCellDef="let element"> {{element.voterNumber}} </td>
+    </ng-container>
+
+    <!-- region Column -->
+    <ng-container matColumnDef="region">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Région </th>
+      <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+    </ng-container>
+
+    <!-- department Column -->
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Département </th>
+      <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+    </ng-container>
+
+    <!-- borough Column -->
+    <ng-container matColumnDef="borough">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Arrondissement </th>
+      <td mat-cell *matCellDef="let element"> {{element.borough}} </td>
+    </ng-container>
+
+    <!-- town Column -->
+    <ng-container matColumnDef="town">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Commun </th>
+      <td mat-cell *matCellDef="let element"> {{element.town}} </td>
+    </ng-container>
+
+    <!-- votingPlace Column -->
+    <ng-container matColumnDef="votingPlace">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu de vote </th>
+      <td mat-cell *matCellDef="let element"> {{element.votingPlace}} </td>
+    </ng-container>
+
+    <!-- pollingStation Column -->
+    <ng-container matColumnDef="pollingStation">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Bureau de vote </th>
+      <td mat-cell *matCellDef="let element"> {{element.pollingStation}} </td>
+    </ng-container>
+
+    <!-- delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Supprimer l'electeur </th>
+      <td mat-cell *matCellDef="let element" class="text-center text-danger" (click)="deleteDialogElector('0ms', '0ms', element.id)"> <i class="bi bi-trash3"></i> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (dblclick)="selectRow(row)"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20, 30, 40, 50, 100]"></mat-paginator>
+</div>

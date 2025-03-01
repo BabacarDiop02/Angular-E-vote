@@ -1,0 +1,49 @@
+.sidebar {
+  width: auto;
+  background: white;
+  border-right: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  border-bottom: 1px solid #ddd;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.menu a i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.menu a:hover {
+  background-color: #aeafaf;
+  color: #0C5EB7;
+}
+
+.iconify {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.bi {
+  margin-left: 3px;
+}
+
+.active {
+  color: #0C5EB7;
+}

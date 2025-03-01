@@ -1,0 +1,17 @@
+form[formGroup] {
+  all: unset;
+}
+
+.code-input {
+  outline: none;
+  width: 60px;
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  background-color: #0C5EB7;
+  border: 1px solid #E58A20;
+  color: white;
+  border-radius: 10px;
+}

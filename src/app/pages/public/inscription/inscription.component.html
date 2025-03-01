@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="register-container">
+    <h2 class="fw-bold line-left">FORMULAIRE D’INSCRIPTION</h2>
+
+    <form [formGroup]="registrationForm">
+      <div class="mb-3">
+        <label class="form-label fw-bold">Prénom</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer votre prénom"
+          formControlName="firstName"
+          [ngClass]="{'is-invalid': registrationForm.controls['firstName'].invalid && registrationForm.controls['firstName'].touched}"
+        />
+        <div *ngIf="registrationForm.controls['firstName'].invalid && registrationForm.controls['firstName'].touched" class="invalid-feedback">
+          Le prénom est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Nom de famille</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer votre nom de famille"
+          formControlName="lastName"
+          [ngClass]="{'is-invalid': registrationForm.controls['lastName'].invalid && registrationForm.controls['lastName'].touched}"
+        />
+        <div *ngIf="registrationForm.controls['lastName'].invalid && registrationForm.controls['lastName'].touched" class="invalid-feedback">
+          Le nom est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Numéro d’identification national</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer votre numéro d’identification national"
+          formControlName="nationalIdentificationNumber"
+          [ngClass]="{'is-invalid': registrationForm.controls['nationalIdentificationNumber'].invalid && registrationForm.controls['nationalIdentificationNumber'].touched}"
+        />
+        <div *ngIf="registrationForm.controls['nationalIdentificationNumber'].invalid && registrationForm.controls['nationalIdentificationNumber'].touched" class="invalid-feedback">
+          <span *ngIf="registrationForm.controls['nationalIdentificationNumber'].errors?.['required']">
+            Le numéro d'identification nationnal est requis.
+          </span>
+          <span *ngIf="registrationForm.controls['nationalIdentificationNumber'].errors?.['pattern']">
+            Le numéro d'identification nationnal doit contenir 13 chiffre.
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Entrer votre email"
+          formControlName="email"
+          [ngClass]="{'is-invalid': registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched}"
+        />
+        <div *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" class="invalid-feedback">
+          <span *ngIf="registrationForm.controls['email'].errors?.['required']">
+            L'email est requis.
+          </span>
+          <span *ngIf="registrationForm.controls['email'].errors?.['email']">
+            L'email est incorrecte.
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Mot de passe</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Entrer votre mot de passe"
+          formControlName="password"
+          [ngClass]="{'is-invalid': registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched}"
+        />
+        <div *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched" class="invalid-feedback">
+          <span *ngIf="registrationForm.controls['password'].errors?.['required']">
+            Le mot de passe est requis.
+          </span>
+          <span *ngIf="registrationForm.controls['password'].errors?.['minlength']">
+            Le mot de passe doit contenir au moins 8 caractères.
+          </span>
+          <span *ngIf="registrationForm.controls['password'].errors?.['pattern']">
+            Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial (&#64;$!%*?&).
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Confirmer mot de passe</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Entrer encore votre mot de passe"
+          formControlName="passwordConfirm"
+          [ngClass]="{'is-invalid': registrationForm.controls['passwordConfirm'].invalid && registrationForm.controls['passwordConfirm'].touched || registrationForm.errors?.['mustMatch']}"
+        />
+        <div *ngIf="registrationForm.controls['passwordConfirm'].invalid && registrationForm.controls['passwordConfirm'].touched" class="invalid-feedback">
+          <span *ngIf="registrationForm.controls['passwordConfirm'].errors?.['required']">
+            La confirmation du mot de passe est requise.
+          </span>
+          <span *ngIf="registrationForm.controls['passwordConfirm'].errors?.['mustMatch']">
+            Les mots de passe ne correspondent pas.
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="register()">S’INSCRIRE</button>
+
+      <div class="text-center mt-3">
+        <p>J’ai déjà un compte <a routerLink="/connection" class="text-link">me connecter</a></p>
+      </div>
+    </form>
+  </div>
+</div>
