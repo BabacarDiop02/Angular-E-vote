@@ -1,0 +1,16 @@
+<h2 mat-dialog-title class="text-center">Suppretion d'électeur</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <p class="text-center">
+    Vous êtes sûr de vouloir supprimer l'électeur <br/>
+    <b>{{electorService.electorDeleted.firstName}}
+    {{electorService.electorDeleted.lastName}}</b> <br/>
+    Numéro d'Identification National: <br/>
+    <b>{{electorService.electorDeleted.nationalIdentificationNumber}}</b>
+  </p>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+  <button class="btn btn-outline-secondary me-3" mat-dialog-close cdkFocusInitial>Annulée</button>
+  <button class="btn btn-outline-danger" mat-dialog-close (click)="electorService.deleteElector(electorService.electorDeleted.id)">Supprétion</button>
+</mat-dialog-actions>

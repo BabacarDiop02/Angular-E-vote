@@ -4,7 +4,6 @@ import {ConnectionComponent} from './pages/public/connection/connection.componen
 import {InscriptionComponent} from './pages/public/inscription/inscription.component';
 import {ContactComponent} from './pages/public/contact/contact.component';
 import {ResultatComponent} from './pages/public/resultat/resultat.component';
-import {CandidatComponent} from './pages/public/candidat/candidat.component';
 import {CandidatListComponent} from './pages/public/candidat-list/candidat-list.component';
 import {TemplateComponent} from './pages/template/template.component';
 import {VoterComponent} from './pages/connecter/voter/voter.component';
@@ -19,19 +18,21 @@ import {RolesGuard} from './guards/roles.guard';
 import {ValidationCompteComponent} from './pages/public/validation-compte/validation-compte.component';
 import {SupervisorComponent} from './pages/connecter/supervisor/supervisor.component';
 import {NonAuthoriserComponent, RegisterSuccessComponent} from './pages/public/non-authoriser/non-authoriser.component';
+import {AddElectorComponent} from './pages/connecter/add-elector/add-elector.component';
+import {CandidatInfosComponent} from './pages/public/candidat-infos/candidat-infos.component';
 
 export const routes: Routes = [
-  {path : '', component : HomePageComponent},
-  {path : 'home', component : HomePageComponent},
-  {path : 'no-authorize', component : NonAuthoriserComponent},
-  {path : 'connection', component : ConnectionComponent},
-  {path : 'inscription', component : InscriptionComponent},
-  {path : 'valid-code', component : ValidationCompteComponent},
-  {path : 'register-success', component : RegisterSuccessComponent},
-  {path : 'contact', component : ContactComponent},
-  {path : 'resultat', component : ResultatComponent},
-  {path : 'candidat', component : CandidatComponent},
-  {path : 'list-candidats', component : CandidatListComponent},
+  {path: '', component: HomePageComponent},
+  {path: 'home', component: HomePageComponent},
+  {path: 'no-authorize', component: NonAuthoriserComponent},
+  {path: 'connection', component: ConnectionComponent},
+  {path: 'inscription', component: InscriptionComponent},
+  {path: 'valid-code', component: ValidationCompteComponent},
+  {path: 'register-success', component: RegisterSuccessComponent},
+  {path: 'contact', component: ContactComponent},
+  {path: 'resultat', component: ResultatComponent},
+  {path: 'list-candidats', component: CandidatListComponent},
+  {path: 'candidat-infos', component: CandidatInfosComponent},
   {
     path: 'connecter',
     component: TemplateComponent,
@@ -70,7 +71,13 @@ export const routes: Routes = [
         path: 'gestion-electeur',
         component: GestionElecteurComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: ['ROLE_ADMINISTRATOR']}
+        data: {expectedRole: ['ROLE_ADMINISTRATOR']},
+      },
+      {
+        path: 'add-electeur',
+        component: AddElectorComponent,
+        canActivate: [AuthenticationGuard, RolesGuard],
+        data: {expectedRole: ['ROLE_ADMINISTRATOR']},
       },
       {
         path: 'gesttion-resultat',
