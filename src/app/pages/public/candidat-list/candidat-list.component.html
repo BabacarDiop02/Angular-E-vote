@@ -1,4 +1,4 @@
-<div class="d-flex flex-wrap gap-5 justify-content-center">
+<div class="d-flex flex-wrap gap-5 justify-content-center pb-3">
   @for (candidat of candidates; track candidat.id) {
     <app-candidat [candidat]="candidat" (click)="informationCandidate(candidat)"/>
   }

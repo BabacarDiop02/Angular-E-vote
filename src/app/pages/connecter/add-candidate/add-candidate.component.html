@@ -2,8 +2,12 @@
   <div class="register-container">
     <h2 class="fw-bold line-left">
       FORMULAIRE
-      <span>D’AJOUER</span>
-      CANDIDAT
+      @if (!updateCandidate) {
+        <span>D’AJOUER</span>
+      } @else {
+        <span>DE MODIFICATION</span>
+      }
+      DE CANDIDAT
     </h2>
 
     <form [formGroup]="candidateForm" enctype="multipart/form-data">
@@ -105,7 +109,17 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="candidateForm.invalid" (click)="addCandidate()">AJOUTER L'ELECTEUR</button>
+      @if (!updateCandidate) {
+        <button type="submit" class="btn btn-primary" [disabled]="candidateForm.invalid" (click)="addCandidate()">
+          <span *ngIf="isUploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="!isUploading">AJOUTER LE CANDIDAT</span>
+        </button>
+      } @else {
+        <button type="submit" class="btn btn-primary" [disabled]="candidateForm.invalid" (click)="updatedCandidate()">
+          <span *ngIf="isUploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="!isUploading">MODIFIER LE CANDIDAT</span>
+        </button>
+      }
 
     </form>
   </div>

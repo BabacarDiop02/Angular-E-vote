@@ -7,7 +7,8 @@ import {MatDrawer} from '@angular/material/sidenav';
 export class TemplateService {
 
   private drawer!: MatDrawer;
-  public connection  = signal<boolean>(false)
+  public connection  = signal<boolean>(false);
+  deleteSuccess = signal<boolean>(false);
 
   constructor() { }
 
@@ -17,5 +18,9 @@ export class TemplateService {
 
   toggle(): void {
     this.drawer?.toggle();
+  }
+
+  setDeleteSuccess(value: boolean) {
+    this.deleteSuccess.set(value);
   }
 }

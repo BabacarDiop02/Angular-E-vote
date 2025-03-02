@@ -1,0 +1,38 @@
+mat-form-field {
+  width: 100%;
+  display: block;
+  margin-top: 15px;
+}
+
+.btn-outline-primary {
+  border-color: #0C5EB7;
+  color: #0C5EB7;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0C5EB7;
+  color: white;
+}
+
+th, td {
+  white-space: nowrap;
+}
+
+th {
+  color: #0C5EB7;
+  font-weight: bold;
+}
+
+table tr:nth-child(n+1):hover td {
+  background-color: #0C5EB7;
+  color: white;
+}
+
+tr td:last-child:hover {
+  background-color: red !important;
+  color: white !important;
+}
+
+mat-form-field {
+  color: #0C5EB7;
+}

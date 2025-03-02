@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {Candidate} from '../../../models/candidate.model';
+import {Component, effect, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CandidateService} from '../../../services/candidate/candidate.service';
 import {Router} from '@angular/router';
@@ -21,10 +20,23 @@ export class AddCandidateComponent implements OnInit {
   candidateForm!: FormGroup;
   fileProgram: File | null = null;
   imageCandidate: File | null = null;
+  updateCandidate: boolean = false;
+  isUploading: boolean = false;
 
   constructor(private candidateService: CandidateService,
               private router: Router,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder) {
+    effect(() => {
+      const data = this.candidateService.selectedRow();
+      console.log("Données reçues :", data);
+      if (data) {
+        this.updateCandidate = true;
+        this.candidateForm.patchValue(data);
+      } else {
+        this.candidateForm.reset();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.candidateForm = this.formBuilder.group({
@@ -55,6 +67,7 @@ export class AddCandidateComponent implements OnInit {
       return;
     } else {
       if (this.candidateForm.valid) {
+        this.isUploading = true;
         const formData = new FormData();
         formData.append('candidateDTO', new Blob([JSON.stringify(this.candidateForm.value)], {type: 'application/json'}));
         formData.append('fileProgram', this.fileProgram);
@@ -62,9 +75,39 @@ export class AddCandidateComponent implements OnInit {
 
         this.candidateService.createCandidate(formData).subscribe({
           next: (data) => {
+            this.isUploading = false;
             console.log(data);
+            this.router.navigate(['/connecter/gestion-candidat']);
           },
           error: (err) => {
+            this.isUploading = false;
+            console.log("Erreur lors de la création du candidat", err);
+          }
+        });
+      }
+    }
+  }
+
+  updatedCandidate() {
+    if (!this.fileProgram || !this.imageCandidate) {
+      alert("Veuillez seléctionner les fichiers");
+      return;
+    } else {
+      if (this.candidateForm.valid) {
+        this.isUploading = true;
+        const formData = new FormData();
+        formData.append('candidateDTO', new Blob([JSON.stringify(this.candidateForm.value)], {type: 'application/json'}));
+        formData.append('fileProgram', this.fileProgram);
+        formData.append('imageCandidate', this.imageCandidate);
+
+        this.candidateService.updatedCandidate(formData).subscribe({
+          next: (data) => {
+            this.isUploading = false;
+            console.log(data);
+            this.router.navigate(['/connecter/gestion-candidat']);
+          },
+          error: (err) => {
+            this.isUploading = false;
             console.log("Erreur lors de la création du candidat", err);
           }
         });

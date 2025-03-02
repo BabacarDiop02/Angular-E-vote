@@ -26,3 +26,11 @@ strong {
   border: 1px solid #0C5EB7;
   overflow: hidden;
 }
+
+img {
+  max-height: 350px;
+}
+
+.card {
+  max-height: 480px;
+}

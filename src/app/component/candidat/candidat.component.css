@@ -8,7 +8,9 @@
 
 .profile-img {
   width: 100%;
+  min-width: 300px;
   border-radius: 5px;
+  max-height: 300px;
 }
 
 .text-section {

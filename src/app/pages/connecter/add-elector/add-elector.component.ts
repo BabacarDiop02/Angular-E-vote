@@ -28,6 +28,7 @@ export class AddElectorComponent implements OnInit {
   private elector!: Elector;
   electorForm!: FormGroup;
   updateElector: boolean = false;
+  isUploading: boolean = false;
 
   constructor(private electorService: ElectorService,
               private router: Router,
@@ -70,13 +71,15 @@ export class AddElectorComponent implements OnInit {
   addElecetor() {
     if (this.electorForm.valid) {
       this.elector = this.electorForm.value;
-
+      this.isUploading = true;
       this.electorService.createElector(this.elector).subscribe({
         next: (data) => {
           console.log(data)
+          this.isUploading = false;
           this.router.navigate(['/connecter/gestion-electeur']);
         },
         error: (error) => {
+          this.isUploading = false;
           console.error("Erreur lors de la création d'un l'électeurs", error);
         }
       });
@@ -99,13 +102,16 @@ export class AddElectorComponent implements OnInit {
   updatedElecetor() {
     if (this.electorForm.valid) {
       this.elector = this.electorForm.value;
+      this.isUploading = true;
 
       this.electorService.updatedElector(this.elector).subscribe({
         next: (data) => {
+          this.isUploading = false;
           console.log(data)
           this.router.navigate(['/connecter/gestion-electeur']);
         },
         error: (error) => {
+          this.isUploading = false;
           console.error("Erreur lors de modification de l'électeurs", error);
         }
       });

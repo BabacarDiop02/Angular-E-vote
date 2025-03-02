@@ -4,16 +4,16 @@ import {SidebarMenuComponent} from '../connecter/sidebar-menu/sidebar-menu.compo
 import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
 import {TemplateService} from '../../services/template/template.service';
 import {AuthenticationService} from '../../services/authentication/authentication.service';
-import {MatCardModule} from '@angular/material/card';
+import {MenuComponent} from "../public/menu/menu.component";
 
 @Component({
   selector: 'app-template',
-  imports: [
-    RouterOutlet,
-    MatSidenavModule,
-    SidebarMenuComponent,
-    MatCardModule
-  ],
+    imports: [
+        RouterOutlet,
+        MatSidenavModule,
+        SidebarMenuComponent,
+        MenuComponent
+    ],
   templateUrl: './template.component.html',
   standalone: true,
   styleUrl: './template.component.css'

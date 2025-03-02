@@ -11,6 +11,8 @@ import {Router, RouterLink} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatDivider} from '@angular/material/divider';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {TemplateService} from '../../../services/template/template.service';
 
 @Component({
   selector: 'app-gestion-electeur',
@@ -25,6 +27,7 @@ import {MatDivider} from '@angular/material/divider';
     MatLabel,
     MatIconModule,
     NgIf,
+    MatTooltipModule,
     RouterLink
   ],
   templateUrl: './gestion-electeur.component.html',
@@ -59,10 +62,12 @@ export class GestionElecteurComponent implements OnInit {
   messageClass: string = '';
   isUploading: boolean = false;
   readonly dialog = inject(MatDialog);
+  deleteSuccess = computed(() => this.templateService.deleteSuccess());
 
 
   constructor(private electorService: ElectorService,
-              private router: Router) {}
+              private router: Router,
+              private templateService: TemplateService) {}
 
   ngOnInit(): void {
     this.allElectors();
@@ -82,7 +87,7 @@ export class GestionElecteurComponent implements OnInit {
       error: (error) => {
         console.error('Erreur lors de la récupération des électeurs', error);
       }
-    })
+    });
   }
 
   filterElector(event: Event) {

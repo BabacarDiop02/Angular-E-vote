@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="text-center">Suppretion d'électeur</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <p class="text-center">
+    Vous êtes sûr de vouloir supprimer l'électeur <br/>
+    <b>{{candidateService.candidateDeleted.firstName}}
+      {{candidateService.candidateDeleted.lastName}}</b> <br/>
+    <b>{{candidateService.candidateDeleted.occupation}}</b>
+  </p>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+  <button class="btn btn-outline-secondary me-3" mat-dialog-close cdkFocusInitial>Annulée</button>
+  <button class="btn btn-outline-danger" mat-dialog-close (click)="candidateService.deleteCandidate(candidateService.candidateDeleted.id)">Supprétion</button>
+</mat-dialog-actions>

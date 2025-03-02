@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {Elector} from '../../models/elector.model';
+import {TemplateService} from '../template/template.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class ElectorService {
   public electorDeleted!: Elector;
 
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router,
+              public templateService: TemplateService) { }
 
   selectRow(row: Elector) {
     this.selectedRow.set(row);
@@ -48,10 +50,17 @@ export class ElectorService {
   }
 
   deleteElector(id: number) {
-    this.http.delete<string>(`${this.apiUrl}/delete-elector/${id}`).subscribe({
+    this.http.delete(`${this.apiUrl}/delete-elector/${id}`, { responseType: 'text' }).subscribe({
       next: (data) => {
         console.log(data);
-        this.router.navigate(['/connecter/gestion-electeur'])
+        this.templateService.setDeleteSuccess(true);
+        console.log(this.templateService.deleteSuccess());
+        this.router.navigate(['/connecter/gestion-electeur']).then(() => {
+          setTimeout(() => {
+            this.templateService.setDeleteSuccess(false);
+            window.location.reload(); // Recharge la page après 5 secondes
+          }, 3000);
+        });
       },
       error: (err) => {
         console.log("Eureur lor de la suppretion ", err);

@@ -4,4 +4,28 @@ mat-drawer {
 
 mat-drawer-content {
   min-height: 600px;
+  margin-top: 70px;
+}
+
+/* Fixe la navbar en haut */
+app-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+mat-drawer{
+  margin-top: 50px;
+}
+
+app-sidebar-menu {
+  position: fixed;
+  width: 20%;
+  left: 0;
+}
+
+#non-connected {
+  margin-top: 70px;
 }

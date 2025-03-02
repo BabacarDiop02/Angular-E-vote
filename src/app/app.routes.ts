@@ -20,6 +20,8 @@ import {SupervisorComponent} from './pages/connecter/supervisor/supervisor.compo
 import {NonAuthoriserComponent, RegisterSuccessComponent} from './pages/public/non-authoriser/non-authoriser.component';
 import {AddElectorComponent} from './pages/connecter/add-elector/add-elector.component';
 import {CandidatInfosComponent} from './pages/public/candidat-infos/candidat-infos.component';
+import {AddCandidateComponent} from './pages/connecter/add-candidate/add-candidate.component';
+import {HomeConnecterComponent} from './pages/connecter/home-connecter/home-connecter.component';
 
 export const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -35,7 +37,7 @@ export const routes: Routes = [
   {path: 'candidat-infos', component: CandidatInfosComponent},
   {
     path: 'connecter',
-    component: TemplateComponent,
+    component: HomeConnecterComponent,
     canActivate: [AuthenticationGuard], children : [
       {
         path: 'voter',
@@ -64,6 +66,12 @@ export const routes: Routes = [
       {
         path: 'gestion-candidat',
         component: GestionCandidatComponent,
+        canActivate: [AuthenticationGuard, RolesGuard],
+        data: {expectedRole: ['ROLE_ADMINISTRATOR']}
+      },
+      {
+        path: 'add-candidate',
+        component: AddCandidateComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
         data: {expectedRole: ['ROLE_ADMINISTRATOR']}
       },

@@ -200,9 +200,15 @@
         </div>
       </div>
       @if (!updateElector) {
-        <button type="submit" class="btn btn-primary" [disabled]="electorForm.invalid" (click)="addElecetor()">AJOUTER L'ELECTEUR</button>
+        <button type="submit" class="btn btn-primary" [disabled]="electorForm.invalid" (click)="addElecetor()">
+          <span *ngIf="isUploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="!isUploading">AJOUTER L'ELECTEUR</span>
+        </button>
       } @else {
-        <button type="submit" class="btn btn-primary" [disabled]="electorForm.invalid" (click)="updatedElecetor()">MODIFIER L'ELECTEUR</button>
+        <button type="submit" class="btn btn-primary" [disabled]="electorForm.invalid" (click)="updatedElecetor()">
+          <span *ngIf="isUploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="!isUploading">MODIFIER L'ELECTEUR</span>
+        </button>
       }
 
     </form>
