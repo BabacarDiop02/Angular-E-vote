@@ -1,1 +1,82 @@
-<p>profile works!</p>
+<mat-tab-group animationDuration="2000ms">
+  <mat-tab label="Information Personnel">
+    <div class="p-3">
+      <table class="table ">
+        <tbody>
+        <tr>
+          <th scope="row">Numéro d'Identification National</th>
+          <td>{{ profile.nationalIdentificationNumber }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Prénom</th>
+          <td>{{ profile.firstName }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Nom</th>
+          <td>{{ profile.lastName }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Date De Naissance</th>
+          <td>{{ profile.dateOfBirth | date:'dd/MM/yyyy'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Lieu De Naissance</th>
+          <td>{{ profile.placeOfBirth }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Information Electoral">
+    <div class="p-3">
+      <table class="table ">
+        <tbody>
+        <tr>
+          <th scope="row">Numéro d'Electeur</th>
+          <td>{{ profile.voterNumber }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Région</th>
+          <td>{{ profile.region }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Département</th>
+          <td>{{ profile.department }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Arrondissement</th>
+          <td>{{ profile.borough }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Commun</th>
+          <td>{{ profile.town }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Lieu De Vote</th>
+          <td>{{ profile.votingPlace }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Bureau De Vote</th>
+          <td>{{ profile.pollingStation }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Information de connection">
+    <div class="p-3">
+      <table class="table ">
+        <tbody>
+        <tr>
+          <th scope="row">Email</th>
+          <td>{{ profile.email }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Password</th>
+          <td>{{ profile.password }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+</mat-tab-group>
