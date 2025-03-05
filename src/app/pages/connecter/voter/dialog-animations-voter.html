@@ -1,0 +1,19 @@
+<h2 mat-dialog-title class="text-center">Je Vote Pour</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="overflow-y-hidden py-1">
+  <div class="card my-1 shadow mx-auto">
+    <div class="text-center justify-content-center p-2">
+      <img class="img-fluid" [src]="candidateService.getFileUrl('profile', candidate.profileNameImage)" alt="Profil">
+    </div>
+    <div class="card-body text-center">
+      <h6 class="card-title text-primary">{{ candidate.firstName }} {{ candidate.lastName }}</h6>
+      <span class="text-muted">{{ candidate.occupation }}</span><br />
+      <span><strong>Age :</strong> {{ candidate.age }}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+  <button class="btn btn-outline-secondary me-3" mat-dialog-close cdkFocusInitial>Annulée</button>
+  <button class="btn btn-outline-success" mat-dialog-close (click)="voteService.voter(candidate.id)">VOTER</button>
+</mat-dialog-actions>

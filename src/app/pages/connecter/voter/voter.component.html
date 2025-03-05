@@ -1,1 +1,23 @@
-<p>voter works!</p>
+@if (hasVoted) {
+  <div class="alert alert-danger text-center">
+    Vous avez déjà voté !
+  </div>
+  <div class="text-center">
+    <img class="img-fluid" src="voter.png" alt="image voter">
+  </div>
+
+} @else {
+  <div *ngIf="voteService.voteMessage() === 'Vote successfully recorded!'" class="alert alert-success">
+    Vote enregistré avec succès !
+  </div>
+  <div class="d-flex flex-wrap gap-5 justify-content-center py-5">
+    @for (candidat of candidates; track candidat.id) {
+      <app-candidat
+        [candidat]="candidat"
+        [matTooltip]="'Double clicker et voter pour ' + candidat.firstName + ' ' + candidat.lastName"
+        [matTooltipPosition]="'right'"
+        (dblclick)="voteDialog('0ms', '0ms', candidat)"
+      />
+    }
+  </div>
+}

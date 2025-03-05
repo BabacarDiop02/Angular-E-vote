@@ -16,7 +16,7 @@ export class ElectorService {
 
   constructor(private http: HttpClient,
               private router: Router,
-              public templateService: TemplateService) { }
+              private templateService: TemplateService) {}
 
   selectRow(row: Elector) {
     this.selectedRow.set(row);

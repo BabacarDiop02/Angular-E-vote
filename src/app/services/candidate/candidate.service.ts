@@ -13,6 +13,7 @@ export class CandidateService {
   private apiUrl = environment.apiUrl;
   selectedRow = signal<any>(null);
   public candidateDeleted!: Candidate;
+  public candidateVoted!: Candidate
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -27,6 +28,7 @@ export class CandidateService {
     return this.http.get<Candidate>(`${this.apiUrl}/candidate/${id}`).subscribe({
       next: (data) => {
         this.candidateDeleted = data;
+        this.candidateVoted = data;
       },
       error: (error) => {
         console.log("Eurreur lors de la récupération de l'electeur", error);
