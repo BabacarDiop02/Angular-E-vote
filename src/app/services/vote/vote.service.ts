@@ -36,4 +36,25 @@ export class VoteService {
   hasVoted(): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/has-voted`);
   }
+
+  allVotesCount():Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/all-votes`);
+  }
+
+  voteByCandidate(candidatId: number){
+    this.http.get<{
+      numberOfVote: number,
+      firstName: string,
+      lastName: string,
+      age: number,
+      occupation: string
+    }>(`${this.apiUrl}/votes-candidate?candidateId=${candidatId}`).subscribe({
+      next: (data) => {
+        return data.numberOfVote;
+    },
+      error: (err) => {
+        return 0;
+      }
+    });
+  }
 }

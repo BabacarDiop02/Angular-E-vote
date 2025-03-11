@@ -7,7 +7,7 @@
     <li *ngIf="authenticationService.isAdmin()"><a routerLink="/connecter/gestion-electeur" routerLinkActive="active"><i class="bi bi-people-fill"></i> Électeurs</a></li>
     <li *ngIf="authenticationService.isElector()"><a routerLink="/connecter/profile" routerLinkActive="active"><i class="bi bi-person-circle"></i> Mon Profil</a></li>
     <li *ngIf="authenticationService.isAdmin() || authenticationService.isSupervisor()"><a routerLink="/connecter/gesttion-resultat" routerLinkActive="active"><i class="iconify" data-icon="carbon:result-old"></i> Résultats</a></li>
-    <li *ngIf="authenticationService.isAdmin() || authenticationService.isSupervisor()"><a routerLink="/connecter/supervisor" routerLinkActive="active"><i class="iconify" data-icon="emojione-monotone:eyes"></i> Superviser</a></li>
+    <li *ngIf="authenticationService.isSupervisor()"><a routerLink="/connecter/supervisor" routerLinkActive="active"><i class="iconify" data-icon="emojione-monotone:eyes"></i> Superviser</a></li>
     <li *ngIf="authenticationService.isElector()"><a routerLink="/connecter/chatbot" routerLinkActive="active"><i class="bi bi-chat-quote-fill"></i> Chatbot</a></li>
   </ul>
 </div>

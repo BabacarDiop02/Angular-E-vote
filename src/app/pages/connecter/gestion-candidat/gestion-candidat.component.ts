@@ -13,6 +13,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatDivider} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TemplateService} from '../../../services/template/template.service';
+import {VoteService} from '../../../services/vote/vote.service';
 
 @Component({
   selector: 'app-gestion-candidat',
@@ -53,7 +54,8 @@ export class GestionCandidatComponent implements OnInit {
 
   constructor(private candidateService: CandidateService,
               private router: Router,
-              private templateService: TemplateService) {
+              private templateService: TemplateService,
+              private voteService: VoteService) {
   }
 
   ngOnInit(): void {

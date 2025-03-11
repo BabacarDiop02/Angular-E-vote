@@ -1,1 +1,24 @@
-<p>resultat works!</p>
+<h1 class="text-center mb-4">Résultats Élection Présidentielle</h1>
+@for (candidat of candidates; track candidat.id) {
+  <div class="pb-5">
+    <div class="container">
+      <div class="list-group">
+        <div class="list-group-item d-flex justify-content-between align-items-center row">
+          <div class="col-lg-2">
+            <img [src]="candidateService.getFileUrl('profile', candidat.profileNameImage)" alt="Profil" class="img-fluid rounded-circle">
+          </div>
+          <div class="col-lg-7">
+            <div class="ms-4">
+              <h4 [ngClass]="getProgressClass((candidat.voice / allVotes) * 100)">{{candidat.firstName}} {{candidat.lastName}}</h4>
+              <p class="mb-1">{{ candidat.occupation }}</p>
+              <small>VOIX : <span [ngClass]="getProgressClass((candidat.voice / allVotes) * 100)">{{ candidat.voice }}</span></small>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <span [ngClass]="getProgressClass((candidat.voice / allVotes) * 100)" class="fw-bold fs-1 p-3">{{ (allVotes !== 0 ? (candidat.voice / allVotes) * 100 : 0) | number:'1.0-2' }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

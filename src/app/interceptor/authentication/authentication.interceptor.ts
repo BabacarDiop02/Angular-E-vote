@@ -9,7 +9,9 @@ export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
     "/api/e-vote/connection",
     "/api/e-vote/update-password",
     "/api/e-vote/new-password",
-    "/api/e-vote/candidates"
+    "/api/e-vote/candidates",
+    "/api/e-vote/votes-candidate",
+    "/api/e-vote/all-votes"
   ];
 
   // Vérifier si l'URL fait partie des exclusions
