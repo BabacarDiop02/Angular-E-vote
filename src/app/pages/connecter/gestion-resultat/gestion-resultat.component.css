@@ -1,0 +1,11 @@
+.card {
+  border-radius: 10px;
+}
+
+canvas {
+  max-height: 400px;
+}
+
+.text-primary {
+  color: #0C5EB7 !important;
+}

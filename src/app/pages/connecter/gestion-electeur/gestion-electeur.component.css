@@ -28,9 +28,17 @@ table tr:nth-child(n+1):hover td {
   color: white;
 }
 
-tr td:last-child:hover {
-  background-color: red !important;
+.bi-trash3:hover, .bi-pencil-square:hover {
   color: white !important;
+  padding: 10px;
+}
+
+.bi-trash3:hover {
+  background-color: red !important;
+}
+
+.bi-pencil-square:hover {
+  background-color: yellow !important;
 }
 
 mat-form-field {

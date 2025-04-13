@@ -1,5 +1,45 @@
 <mat-card>
   <mat-card-content>
-    <router-outlet/>
+    <router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate()"></router-outlet>
+    <div class="row" *ngIf="!childActivated">
+      <div class="col-lg-6">
+        <app-progress-chart
+          chartId="inscriptionChart"
+          [title]="'Taux d’inscription'"
+          [percentage]="percentageElectors"
+          [values]="[electeurInscrit, electeurs - electeurInscrit]"
+          [labels]="['Électeurs inscrits', 'Non inscrits']">
+        </app-progress-chart>
+      </div>
+      <div class="col-lg-6">
+        <app-progress-chart
+          chartId="voteChart"
+          [title]="'Taux de participation'"
+          [percentage]="percentageVote"
+          [values]="[allVotes, electeurInscrit - allVotes]"
+          [labels]="['Électeurs ayant voté', 'Non votants']">
+        </app-progress-chart>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
+
+<!-- ********************************************************************************* -->
+
+<!-- BOUTON FLOTTANT -->
+<div class="chatbot-toggle" (click)="toggleChat()">
+  💬
+</div>
+
+<!-- FENÊTRE DU CHATBOT -->
+<div class="chatbot-window" *ngIf="isOpen">
+  <div class="chatbot-header">🤖 Chatbot</div>
+
+  <div class="chatbot-body">
+    <p>Bonjour 👋 Que puis-je faire pour vous ?</p>
+    <button (click)="handleChoice('electeurs')">🗳️ Aider les électeurs</button>
+    <button (click)="handleChoice('votes')">❓ Répondre aux questions sur les votes</button>
+    <button (click)="handleChoice('connexion')">🔐 Gérer les problèmes de connexion</button>
+    <button (click)="handleChoice('autre')">🔧 Autre</button>
+  </div>
+</div>

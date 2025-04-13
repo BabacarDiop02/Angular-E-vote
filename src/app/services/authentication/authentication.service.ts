@@ -70,4 +70,8 @@ export class AuthenticationService {
   public isSupervisor(): boolean {
     return this.getRoles().includes('ROLE_SUPERVISOR');
   }
+
+  allUsersCount():Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/all-users`);
+  }
 }

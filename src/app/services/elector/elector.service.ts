@@ -67,4 +67,8 @@ export class ElectorService {
       }
     });
   }
+
+  allElectorsCount():Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/all-electors`);
+  }
 }

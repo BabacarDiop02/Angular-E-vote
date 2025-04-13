@@ -1,1 +1,32 @@
-<p>scrutin works!</p>
+<div class="container mt-4">
+  <button type="button" routerLink="/connecter/add-election">+</button>
+  <h2 class="mb-3">Liste des Élections</h2>
+
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Titre</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Type</th>
+      <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let election of elections">
+      <td>{{ election.id }}</td>
+      <td>{{ election.title }}</td>
+      <td>{{ election.startDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ election.endDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ election.type }}</td>
+      <td>
+          <span class="badge rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span>
+        {{ election.status }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

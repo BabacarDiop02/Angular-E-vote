@@ -28,10 +28,20 @@ table tr:nth-child(n+1):hover td {
   color: white;
 }
 
-tr td:last-child:hover {
-  background-color: red !important;
-  color: white !important;
+
+.bi-trash3:hover, .bi-pencil-square:hover {
+  color: #0C5EB7 !important;
+  padding: 10px;
 }
+
+.bi-trash3:hover {
+  background-color: red !important;
+}
+
+.bi-pencil-square:hover {
+  background-color: yellow !important;
+}
+
 
 mat-form-field {
   color: #0C5EB7;

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, computed, inject, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {DatePipe, NgIf} from '@angular/common';
+import { NgIf} from '@angular/common';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
@@ -11,7 +11,6 @@ import {CandidateService} from '../../../services/candidate/candidate.service';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatDivider} from '@angular/material/divider';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import {TemplateService} from '../../../services/template/template.service';
 import {VoteService} from '../../../services/vote/vote.service';
 
@@ -26,7 +25,6 @@ import {VoteService} from '../../../services/vote/vote.service';
     MatFormField,
     MatLabel,
     MatIconModule,
-    MatTooltipModule,
     RouterLink,
     NgIf
   ],
@@ -45,7 +43,7 @@ export class GestionCandidatComponent implements OnInit {
     "age",
     "occupation",
     "voice",
-    "delete",
+    "action",
   ];
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;

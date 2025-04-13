@@ -1,0 +1,75 @@
+.card {
+  width: 300px;
+  border-radius: 15px;
+  padding: 10px;
+  background: white;
+}
+.col-lg-6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/**************************************************************************************/
+.chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0C5EB7;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.chatbot-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1051;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbot-header {
+  background-color: #0C5EB7;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.chatbot-body {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.chatbot-body button {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: none;
+  background-color: #E58A20;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chatbot-footer {
+  padding: 8px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}

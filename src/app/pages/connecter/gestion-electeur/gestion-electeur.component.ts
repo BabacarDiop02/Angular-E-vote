@@ -11,7 +11,6 @@ import {Router, RouterLink} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatDivider} from '@angular/material/divider';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import {TemplateService} from '../../../services/template/template.service';
 
 @Component({
@@ -27,7 +26,6 @@ import {TemplateService} from '../../../services/template/template.service';
     MatLabel,
     MatIconModule,
     NgIf,
-    MatTooltipModule,
     RouterLink
   ],
   templateUrl: './gestion-electeur.component.html',
@@ -51,7 +49,7 @@ export class GestionElecteurComponent implements OnInit {
     "town",
     "votingPlace",
     "pollingStation",
-    "delete",
+    "action",
   ];
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

@@ -5,13 +5,11 @@ import {InscriptionComponent} from './pages/public/inscription/inscription.compo
 import {ContactComponent} from './pages/public/contact/contact.component';
 import {ResultatComponent} from './pages/public/resultat/resultat.component';
 import {CandidatListComponent} from './pages/public/candidat-list/candidat-list.component';
-import {TemplateComponent} from './pages/template/template.component';
 import {VoterComponent} from './pages/connecter/voter/voter.component';
 import {ScrutinComponent} from './pages/connecter/scrutin/scrutin.component';
 import {GestionCandidatComponent} from './pages/connecter/gestion-candidat/gestion-candidat.component';
 import {GestionElecteurComponent} from './pages/connecter/gestion-electeur/gestion-electeur.component';
 import {ProfileComponent} from './pages/connecter/profile/profile.component';
-import {ChatbotComponent} from './pages/connecter/chatbot/chatbot.component';
 import {GestionResultatComponent} from './pages/connecter/gestion-resultat/gestion-resultat.component';
 import {AuthenticationGuard} from './guards/authetication.guard';
 import {RolesGuard} from './guards/roles.guard';
@@ -22,6 +20,7 @@ import {AddElectorComponent} from './pages/connecter/add-elector/add-elector.com
 import {CandidatInfosComponent} from './pages/public/candidat-infos/candidat-infos.component';
 import {AddCandidateComponent} from './pages/connecter/add-candidate/add-candidate.component';
 import {HomeConnecterComponent} from './pages/connecter/home-connecter/home-connecter.component';
+import {AddElectionComponent} from './pages/connecter/add-election/add-election.component';
 
 export const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -52,14 +51,14 @@ export const routes: Routes = [
         data: {expectedRole: ['ROLE_ELECTOR']}
       },
       {
-        path: 'chatbot',
-        component: ChatbotComponent,
-        canActivate: [AuthenticationGuard, RolesGuard],
-        data: {expectedRole: ['ROLE_ELECTOR']}
-      },
-      {
         path: 'scrutin',
         component: ScrutinComponent,
+        canActivate: [AuthenticationGuard, RolesGuard],
+        data: {expectedRole: ['ROLE_ADMINISTRATOR']}
+      },
+      {
+        path: 'add-election',
+        component: AddElectionComponent,
         canActivate: [AuthenticationGuard, RolesGuard],
         data: {expectedRole: ['ROLE_ADMINISTRATOR']}
       },
