@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="register-container">
+    <h2 class="fw-bold line-left">Créer une Élection</h2>
+    <form [formGroup]="electionForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label fw-bold">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Entrer le nom de l'élection"
+          formControlName="title"
+          [ngClass]="{'is-invalid': electionForm.controls['title'].invalid && electionForm.controls['title'].touched}"
+        />
+        <div *ngIf="electionForm.controls['title'].invalid && electionForm.controls['title'].touched" class="invalid-feedback">
+          Le nom de l'élection est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Date de début</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="Entrer la Date de début de l'élection"
+          formControlName="startDate"
+          [ngClass]="{'is-invalid': electionForm.controls['startDate'].invalid && electionForm.controls['startDate'].touched}"
+        />
+        <div *ngIf="electionForm.controls['startDate'].invalid && electionForm.controls['startDate'].touched" class="invalid-feedback">
+          La Date de début de l'élection est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Date de fin</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="Entrer la Date de fin de l'élection"
+          formControlName="endDate"
+          [ngClass]="{'is-invalid': electionForm.controls['endDate'].invalid && electionForm.controls['endDate'].touched}"
+        />
+        <div *ngIf="electionForm.controls['endDate'].invalid && electionForm.controls['endDate'].touched" class="invalid-feedback">
+          La Date de fin de l'élection est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Type d'élection</label>
+        <select
+          class="form-select"
+          formControlName="type"
+          [ngClass]="{'is-invalid': electionForm.controls['type'].invalid && electionForm.controls['type'].touched}">
+          <option value="" disabled selected>Sélectionner un type</option>
+          <option *ngFor="let type of electionTypes" [value]="type">{{ type }}</option>
+        </select>
+        <div *ngIf="electionForm.controls['type'].invalid && electionForm.controls['type'].touched" class="invalid-feedback">
+          Le type d'élection est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Statut</label>
+        <select
+          class="form-select"
+          formControlName="status"
+          [ngClass]="{'is-invalid': electionForm.controls['status'].invalid && electionForm.controls['status'].touched}">
+          <option value="" disabled selected>Sélectionner un statut</option>
+          <option *ngFor="let status of electionStatus" [value]="status">{{ status }}</option>
+        </select>
+
+        <div *ngIf="electionForm.controls['status'].invalid && electionForm.controls['status'].touched" class="invalid-feedback">
+          Le statut de l'élection est requis.
+        </div>
+      </div>
+
+      <h3>Sélectionnez les candidats</h3>
+      <div class="row" formArrayName="candidates">
+        <div class="col-md-3" *ngFor="let candidate of candidates; let i = index">
+          <div class="card mb-2">
+            <img [src]="candidateService.getFileUrl('profile', candidate.profileNameImage)"
+                 alt="Profil" class="img-fluid img-thumbnail">
+            <div class="card-body">
+              <h6 class="card-title">{{ candidate.firstName | truncate:13 }} {{ candidate.lastName }}</h6>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" [formControlName]="i" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Sélectionner</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ce bloc s'affiche une seule fois après la boucle -->
+        <div class="col-md-3" *ngIf="candidates.length > 0">
+          <div class="card">
+            <i class="bi bi-person-add" routerLink="/connecter/add-candidate"></i>
+            <hr class="my-0">
+            <div class="card-body">
+              <h6 class="card-title">Ajouter un Nouveau Candidat</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @if (!updateElection) {
+        <button type="submit" class="btn btn-primary" [disabled]="electionForm.invalid">
+          <span *ngIf="isUploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="!isUploading">{{ "Créer l'élection" | uppercase }}</span>
+        </button>
+      } @else {
+        <button type="submit" class="btn btn-primary" [disabled]="electionForm.invalid">
+          <span *ngIf="isUploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="!isUploading">{{ "Modifier l'élection" | uppercase }}</span>
+        </button>
+      }
+    </form>
+  </div>
+</div>

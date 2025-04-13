@@ -1,0 +1,26 @@
+<div class="card shadow-sm">
+  <div class="card-body text-center position-relative">
+
+    <!-- Graphique circulaire -->
+    <div class="chart-wrapper">
+      <canvas [id]="chartId"></canvas>
+
+      <!-- Pourcentage centré -->
+      <div class="percentage-overlay">
+        <strong>{{ percentage | number:'1.0-0' }}%</strong>
+      </div>
+    </div>
+
+    <!-- Statistiques -->
+    <div class="stats d-flex justify-content-between mt-3 px-4">
+      <span>{{ values[0] }}</span>
+      <span>{{ values[1] }}</span>
+    </div>
+
+  </div>
+
+  <div class="card-footer text-center">
+    <!-- Titre du graphique -->
+    <h5 class="text-primary">{{ title }}</h5>
+  </div>
+</div>
